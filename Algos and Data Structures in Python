@@ -1,0 +1,65 @@
+Algos and Data Structures in Python
+https://www.udemy.com/algorithms-and-data-structures-in-python/learn/v4/t/lecture/2729984
+Covers End of section 3 (Complexity classes)
+Section 4: Arrays
+Section 5: Linked Lists
+
+P = polynomial time
+NP = nondeterministic polynomial time, where we can check a given solution in polynomial time, but probably not create a solution
+
+NP - complete: famously hard in applied math. also means that size of problem increases time needed to find solution. see graph coloring, Hamiltonian path problem (visiting each node on a graph exactly once)
+
+NP - hard: versions of NP problems such that an NP-Complete can be produced by reducing the NP-Hard. The Halting Problem: will this program/input combo ever halt or just run forever?
+
+
+Arrays Section
+==============================================
+
+Collection of ellements that are indexed with a key value. Often starts at 0. Can be multidimensional indices (2x2, 4x6, whatever)
+
+Most times, arrays are restricted to one type of object, Python is more permissive. 
+
+Application: lookup tables/hashtables, heaps. 
+
+Advantages: Random access (via index/key), constant time complexity - meaning very vast for repetition
+
+Disadvantages: size must be known at creation (not dynamic) or there's an O(N) copying operation to input it into a new/larger array. Many languages only take a single data type. 
+
+Operations:
+Add (to end of list)- works until the array is full, takes time O(1) aka constant time complexity.
+
+Insert (at given index)- requires shifting of every following item, O(N) aka linear time complexity. Linked lists are better for this?
+
+Remove (aka pop): just remove the last item, O(1)
+
+Remove @ given index: O(N), b/c shifts every following item into the preceding open space. 
+
+Arrays in Python: using lists instead?
+numbs = [1,2,3,4]
+print(numbs[1:3]) returns slice of numbs
+
+getting a specific data value requires iteration thru list, completes in O(N) time. 
+
+numbs.insert(INXEX, VALUE) is O(N)
+but numbs[INDEX] = X is O(1)
+
+LINKED LISTS
+====================================================
+Series of nodes that points to the following one, terminates with a null pointer
+
+Single node: contains data value and a reference pointer (to another node or a null), may contain other things, but these are the basic req's
+
+Used in stacks or queues. Doesn't allow any random access (by themselves). Finding or removing a node is O(N)
+
+Advantages: are Dynamic Data Structures, can allocate memory during runtime. First/early elements are cheap to manipulate. Easy to implement, can store jagged elements (arrays assume consistency/the max). Updating occurs in O(1)
+
+Disadvantages: node references are memory inefficient, must be accessed in sequence FROM THE BEGINNING or in a DOUBLE linked list, which requires a second, backward facing pointer
+
+OPERATIONS: 
+.insertAtStart() - O(1) just a new node, pointing at previous first (vs. the array, which requires reconstructing whole index)
+
+.insertAtEnd() - O(N), must traverse whole list, find NULL, fill that pointer with new node
+
+.removeAtStart() - O(1), just remove the first node/pointer
+
+.removeAtValue()- O(N) --technically avgs to N/2 operations but that's class O(N), traverse until the value is found, then remove node/update pointers.
